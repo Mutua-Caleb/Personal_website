@@ -69,4 +69,18 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-end
+end 
+gem 'devise'
+gem 'annotate'
+gem 'will_paginate'
+gem 'tailwindcss-rails'
+gem 'stimulus-rails'
+gem 'faker'
+gem 'better_errors'
+gem 'guard'
+gem 'guard-livereload'
+# gem 
+# gem 'pry-rails'
+
+
+
