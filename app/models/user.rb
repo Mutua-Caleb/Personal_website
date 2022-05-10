@@ -3,7 +3,6 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
-#  admin                  :boolean
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  name                   :string
@@ -24,7 +23,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+      
   
-  has_many :posts, dependent: :destroy 
+  has_many :posts, dependent: :destroy
   has_many :projects, dependent: :destroy
 end

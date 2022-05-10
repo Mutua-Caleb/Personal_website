@@ -11,7 +11,7 @@
 #
 # Indexes
 #
-#  index_posts_on_user_id  (user_id)p
+#  index_posts_on_user_id  (user_id)
 #
 # Foreign Keys
 #
@@ -22,6 +22,8 @@ class Post < ApplicationRecord
   validates :user_id, presence: true 
   validates :content, presence: true, length: {in: 1..50000 }
   validates :title, presence: true, length: {in: 5..200} 
+
+  has_many :comments, as: :commented_on
 
   scope :newest_first, lambda { order("created_at   DESC")}
   scope :search, lambda {|query| where("title LIKE?", "%#{query}%")}

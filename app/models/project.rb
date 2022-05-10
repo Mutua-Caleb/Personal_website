@@ -20,6 +20,8 @@
 #
 class Project < ApplicationRecord
   belongs_to :user
+  has_many :comments, as: :commented_on
+
   validates :user_id, presence: true 
   validates :title, presence: true, length: { in: 5..200 }
   validates :description, presence: true, length: {in: 1..50000} 

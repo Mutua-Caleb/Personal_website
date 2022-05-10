@@ -2,7 +2,9 @@
 #
 
 Rails.application.routes.draw do
-  resources :projects
+  resources :projects do 
+    resources :comments
+  end
   resources :posts
   devise_for :users 
   get 'home/index'

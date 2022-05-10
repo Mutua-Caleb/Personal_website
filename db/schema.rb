@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_08_102657) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_10_053846) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "commented_on_id"
+    t.string "commented_on_type"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commented_on_type", "commented_on_id"], name: "index_comments_on_commented_on_type_and_commented_on_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.text "content"
@@ -41,13 +53,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_102657) do
     t.datetime "remember_created_at"
     t.string "name"
     t.string "username"
-    t.boolean "admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "projects", "users"
 end
