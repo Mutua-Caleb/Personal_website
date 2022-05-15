@@ -4,6 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  content    :text
+#  status     :integer          default("draft")
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -18,6 +19,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Post < ApplicationRecord
+	enum status: { draft: 0, published: 1}
   belongs_to :user
   validates :user_id, presence: true 
   validates :content, presence: true, length: {in: 1..50000 }

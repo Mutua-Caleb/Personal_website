@@ -74,11 +74,12 @@ gem 'devise'
 gem 'annotate'
 gem 'will_paginate'
 gem 'tailwindcss-rails'
-gem 'stimulus-rails'
+# gem 'stimulus-rails'
 gem 'faker'
 gem 'better_errors'
 gem 'guard'
 gem 'guard-livereload'
+gem 'friendly_id'
 # gem 
 # gem 'pry-rails'
 
